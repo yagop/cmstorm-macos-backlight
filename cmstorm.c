@@ -228,6 +228,12 @@ int main( int argc, const char * argv[] )
 				continue;
 			}
 
+			char oIOHIDProductKeyString[1024];
+            CFStringGetCString(oIOHIDProductKey, oIOHIDProductKeyString, sizeof(oIOHIDProductKeyString), kCFStringEncodingUTF8);
+			if (strcmp(oIOHIDProductKeyString, "USB KEYBOARD") != 0) {
+				continue;
+			}
+
 			// Get the state
 			IOHIDValueRef currentValueRef = NULL;
 			IOHIDDeviceGetValue( tIOHIDDeviceRefs[deviceIndex], tIOHIDElementRef, &currentValueRef);
